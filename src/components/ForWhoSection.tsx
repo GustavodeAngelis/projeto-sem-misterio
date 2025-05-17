@@ -8,7 +8,7 @@ const ForWhoSection: React.FC = () => {
     "É artista da dança, música, teatro, circo ou cultura popular",
     "Já tentou escrever projeto, mas se sentiu travado(a), inseguro(a) ou perdido(a)",
     "Tem ideias boas, mas não sabe como transformar isso num projeto coeso",
-    "Se frustra com os editais, porque parece que sempre falta "alguma coisa"",
+    "Se frustra com os editais, porque parece que sempre falta \"alguma coisa\"",
     "Quer aprender a escrever com mais clareza e estratégia, sem abrir mão da sua linguagem"
   ];
 
