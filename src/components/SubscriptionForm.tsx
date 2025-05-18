@@ -65,6 +65,13 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     setIsSubmitting(true);
     
     try {
+      console.log("Sending data to Supabase:", {
+        name: formData.name,
+        email: formData.email,
+        whatsapp: formData.whatsapp,
+        source: "lp_forma_forca"
+      });
+      
       // Save data to Supabase
       const { error } = await supabase
         .from('leads')
@@ -73,7 +80,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             name: formData.name,
             email: formData.email,
             whatsapp: formData.whatsapp,
-            source: "lp_forma_forca"  // Updated to the requested fixed value
+            source: "lp_forma_forca"
           }
         ]);
       
