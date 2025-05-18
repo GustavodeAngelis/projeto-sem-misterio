@@ -4,6 +4,7 @@ import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { z } from "zod";
 
 interface SubscriptionFormProps {
   className?: string;
@@ -24,6 +25,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{email?: string}>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -31,10 +33,35 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
       ...formData,
       [name]: value,
     });
+    
+    // Clear errors when user types in the field
+    if (name === 'email' && errors.email) {
+      setErrors({...errors, email: undefined});
+    }
+  };
+
+  const validateForm = () => {
+    const emailSchema = z.string().email("Por favor, forneça um e-mail válido");
+    try {
+      emailSchema.parse(formData.email);
+      setErrors({});
+      return true;
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        setErrors({email: err.errors[0].message});
+      }
+      return false;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
@@ -46,7 +73,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             name: formData.name,
             email: formData.email,
             whatsapp: formData.whatsapp,
-            source: "lp_forma_forca_evento_jun_25"
+            source: "lp_forma_forca"  // Updated to the requested fixed value
           }
         ]);
       
@@ -67,18 +94,21 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
       
       toast({
         title: "Inscrição realizada com sucesso!",
-        description: "Enviamos um e-mail de confirmação com os detalhes da live.",
+        description: "Redirecionando para a página de agradecimento...",
       });
       
-      // Reset after showing success message
+      // Clear form data
+      setFormData({
+        name: "",
+        email: "",
+        whatsapp: "",
+      });
+      
+      // Redirect to the thank you page after a short delay
       setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: "",
-          email: "",
-          whatsapp: "",
-        });
-      }, 5000);
+        window.location.href = "https://obrigado-evento-ayumi.lovable.app";
+      }, 1500);
+      
     } catch (err) {
       console.error("Error:", err);
       setIsSubmitting(false);
@@ -102,7 +132,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-md animate-fade-in">
           <p className="text-green-700 font-medium">Inscrição realizada com sucesso!</p>
           <p className="text-green-600 mt-1">
-            Enviamos um e-mail de confirmação com os detalhes da live.
+            Redirecionando para a página de agradecimento...
           </p>
         </div>
       ) : (
@@ -112,7 +142,6 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
               type="text"
               name="name"
               placeholder="Nome completo"
-              required
               className="form-input"
               value={formData.name}
               onChange={handleChange}
@@ -125,10 +154,13 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
               name="email"
               placeholder="E-mail"
               required
-              className="form-input"
+              className={`form-input ${errors.email ? 'border-red-500' : ''}`}
               value={formData.email}
               onChange={handleChange}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
           
           <div>
@@ -136,7 +168,6 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
               type="tel"
               name="whatsapp"
               placeholder="WhatsApp"
-              required
               className="form-input"
               value={formData.whatsapp}
               onChange={handleChange}
