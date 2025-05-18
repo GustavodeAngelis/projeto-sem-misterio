@@ -1,4 +1,9 @@
+
 import React, { useState } from "react";
+import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface SubscriptionFormProps {
   className?: string;
@@ -28,15 +33,42 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted with data:", formData);
+    try {
+      // Save data to Supabase
+      const { error } = await supabase
+        .from('leads')
+        .insert([
+          { 
+            name: formData.name,
+            email: formData.email,
+            whatsapp: formData.whatsapp,
+            source: "lp_forma_forca_evento_jun_25"
+          }
+        ]);
+      
+      if (error) {
+        console.error("Error submitting form:", error);
+        toast({
+          title: "Erro ao enviar formulário",
+          description: "Por favor, tente novamente mais tarde.",
+          variant: "destructive"
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      console.log("Form submitted successfully to Supabase");
       setIsSubmitting(false);
       setIsSubmitted(true);
+      
+      toast({
+        title: "Inscrição realizada com sucesso!",
+        description: "Enviamos um e-mail de confirmação com os detalhes da live.",
+      });
       
       // Reset after showing success message
       setTimeout(() => {
@@ -47,7 +79,15 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
           whatsapp: "",
         });
       }, 5000);
-    }, 1500);
+    } catch (err) {
+      console.error("Error:", err);
+      setIsSubmitting(false);
+      toast({
+        title: "Erro ao enviar formulário",
+        description: "Por favor, tente novamente mais tarde.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -68,7 +108,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <input
+            <Input
               type="text"
               name="name"
               placeholder="Nome completo"
@@ -80,7 +120,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
           </div>
           
           <div>
-            <input
+            <Input
               type="email"
               name="email"
               placeholder="E-mail"
@@ -92,7 +132,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
           </div>
           
           <div>
-            <input
+            <Input
               type="tel"
               name="whatsapp"
               placeholder="WhatsApp"
@@ -103,10 +143,10 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             />
           </div>
           
-          <button
+          <Button
             type="submit"
             disabled={isSubmitting}
-            className={`btn-primary w-full flex justify-center items-center ${
+            className={`w-full flex justify-center items-center ${
               buttonSize === "large" ? "text-lg py-5" : ""
             }`}
           >
@@ -115,7 +155,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             ) : (
               "Quero destravar meu projeto"
             )}
-          </button>
+          </Button>
 
           <p className="text-sm text-textcolor-light text-center mt-2">
             Ao clicar no botão, você aceita nossos Termos de Uso e Política de Privacidade, incluindo cookies e envio de comunicações.
