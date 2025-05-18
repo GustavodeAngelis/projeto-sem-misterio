@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 interface SubscriptionFormProps {
@@ -16,17 +15,16 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     name: "",
     email: "",
     whatsapp: "",
-    agreeToTerms: false,
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     });
   };
 
@@ -47,7 +45,6 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
           name: "",
           email: "",
           whatsapp: "",
-          agreeToTerms: false,
         });
       }, 5000);
     }, 1500);
@@ -106,21 +103,6 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             />
           </div>
           
-          <div className="flex items-start mt-2">
-            <input
-              type="checkbox"
-              name="agreeToTerms"
-              id="agreeToTerms"
-              required
-              className="mt-1"
-              checked={formData.agreeToTerms}
-              onChange={handleChange}
-            />
-            <label htmlFor="agreeToTerms" className="ml-2 text-sm text-textcolor-light">
-              Aceito receber comunicações conforme a LGPD.
-            </label>
-          </div>
-          
           <button
             type="submit"
             disabled={isSubmitting}
@@ -134,6 +116,10 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
               "Quero destravar meu projeto"
             )}
           </button>
+
+          <p className="text-sm text-textcolor-light text-center mt-2">
+            Ao clicar no botão, você aceita nossos Termos de Uso e Política de Privacidade, incluindo cookies e envio de comunicações.
+          </p>
         </form>
       )}
     </div>

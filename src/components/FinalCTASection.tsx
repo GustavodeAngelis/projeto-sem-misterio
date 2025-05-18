@@ -8,10 +8,9 @@ const FinalCTASection: React.FC = () => {
       <div className="container-section">
         <h2 className="section-title text-center mb-8">
           Chega de escrever no escuro. <br className="hidden md:block" />
-          Bora escrever com clareza, estrutura e leveza?
         </h2>
         
-        <div className="max-w-3xl mx-auto space-y-6 text-lg text-center mb-10">
+        <div className="max-w-3xl mx-auto space-y-6 text-lg mb-10">
           <p>
             Se você tá cansado(a) de tentar adivinhar o que escrever…
           </p>

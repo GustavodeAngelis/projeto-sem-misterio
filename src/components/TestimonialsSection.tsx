@@ -27,6 +27,10 @@ const TestimonialsSection: React.FC = () => {
     {
       quote: "Nunca entendi edital com tanta leveza. Pela primeira vez, tô com vontade de continuar escrevendo.",
       name: "Roberta"
+    },
+    {
+      quote: "Nunca entendi edital com tanta leveza. Pela primeira vez, tô com vontade de continuar escrevendo.",
+      name: "Roberta"
     }
   ];
 

@@ -1,4 +1,3 @@
-
 import React from "react";
 import SubscriptionForm from "./SubscriptionForm";
 
@@ -26,13 +25,13 @@ const Header: React.FC = () => {
             <h2 className="text-xl sm:text-2xl mb-6 font-medium">
               Escreva projetos mais competitivos com menos esforço:
               <br />
-              <span className="font-bold italic">
+              <span className="font-bold ">
                 entenda o que realmente importa, o que evitar e como apresentar
                 seu valor com clareza.
               </span>
             </h2>
 
-            <div className="mb-10 text-lg">
+            <div className="mb-6 text-lg">
               <p className="flex items-center gap-2">
                 <span className="text-coral">📅</span>
                 <span>
@@ -41,9 +40,7 @@ const Header: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6 md:p-8 border border-gray-100">
-              <SubscriptionForm buttonSize="large" />
-            </div>
+            <SubscriptionForm buttonSize="large" />
           </div>
         </div>
 
@@ -52,7 +49,7 @@ const Header: React.FC = () => {
           <div className="relative">
             <div className="absolute -z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-coral-dark/10 to-coral/5 blur-2xl"></div>
             <img
-              src="/placeholder.svg"
+              src="/images/imagem-sessao-sobre-ayumi.jpeg"
               alt="Ayumi Hanada - Especialista em projetos culturais"
               className="max-w-full h-auto rounded-lg object-cover"
             />

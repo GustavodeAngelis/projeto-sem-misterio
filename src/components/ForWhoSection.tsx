@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Check, X } from "lucide-react";
 import SubscriptionForm from "./SubscriptionForm";
@@ -19,32 +18,38 @@ const ForWhoSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-cover bg-center bg-fixed" style={{backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1200x800/?artists,performance,dance')"}}>
-      <div className="container-section">
+    <section 
+      className="relative py-16 md:py-24 bg-cover bg-center bg-fixed"
+      style={{
+        backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/imagem-sessao-2.png')"
+      }}
+    >
+      {/* Content wrapper with max-width and padding */}
+      <div className="container-section relative z-10">
         <h2 className="section-title text-center text-white mb-12">
-          Essa live é pra você que...
+        Para quem é essa live?
         </h2>
         
         <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
           {/* For who it is */}
-          <div className="w-full lg:w-1/2 bg-white rounded-lg p-6 md:p-10 border-t-4 border-coral shadow-lg">
-            <h3 className="text-2xl font-serif font-bold mb-6">
-              Identidade e momento
+          <div className="w-full lg:w-1/2 bg-white/95 backdrop-blur-sm rounded-lg p-6 md:p-10 border-t-4 border-coral shadow-xl">
+            <h3 className="text-2xl font-serif font-bold mb-6 text-gray-900">
+              Essa live é para você que...
             </h3>
             
             <div className="space-y-4">
               {rightAudience.map((item, index) => (
                 <div key={index} className="check-item">
                   <Check className="text-coral flex-shrink-0 mt-1" size={22} strokeWidth={2.5} />
-                  <span className="text-lg">{item}</span>
+                  <span className="text-lg text-gray-800">{item}</span>
                 </div>
               ))}
             </div>
           </div>
           
           {/* For who it is not */}
-          <div className="w-full lg:w-1/2 bg-white rounded-lg p-6 md:p-10 border-t-4 border-graylight shadow-lg">
-            <h3 className="text-2xl font-serif font-bold mb-6">
+          <div className="w-full lg:w-1/2 bg-white/95 backdrop-blur-sm rounded-lg p-6 md:p-10 border-t-4 border-graylight shadow-xl">
+            <h3 className="text-2xl font-serif font-bold mb-6 text-gray-900">
               Essa live não é pra você se:
             </h3>
             
@@ -52,7 +57,7 @@ const ForWhoSection: React.FC = () => {
               {wrongAudience.map((item, index) => (
                 <div key={index} className="cross-item">
                   <X className="text-textcolor-light flex-shrink-0 mt-1" size={22} strokeWidth={2.5} />
-                  <span className="text-lg">{item}</span>
+                  <span className="text-lg text-gray-800">{item}</span>
                 </div>
               ))}
             </div>
@@ -61,7 +66,7 @@ const ForWhoSection: React.FC = () => {
         
         {/* Final emotional quote */}
         <div className="mt-12 md:mt-16 max-w-3xl mx-auto text-center">
-          <p className="text-white text-xl md:text-2xl italic">
+          <p className="text-white text-xl md:text-2xl italic font-medium drop-shadow-sm">
             Se você tá cansado de fazer tudo sozinho, de escrever no escuro, e quer um caminho mais leve, claro e possível — essa live é o seu lugar.
           </p>
           

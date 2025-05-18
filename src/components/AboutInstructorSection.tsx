@@ -4,10 +4,10 @@ import { Check } from "lucide-react";
 
 const AboutInstructorSection: React.FC = () => {
   const credentials = [
-    "+15 projetos aprovados em editais como ProAC, FICC e PNAB",
-    "+R$ 1 milhão captado em projetos culturais",
-    "Criadora do método Forma & Força",
-    "Artista atuante, professora e produtora independente",
+    "+15 projetos aprovados para projetos próprios",
+    "+R$ 1 milhão captados",
+    "Criadora do Fluxo em Redes",
+    "Artista, empreendedora e produtora independente",
     "Mais de 10 anos de experiência no setor cultural"
   ];
 
@@ -22,9 +22,9 @@ const AboutInstructorSection: React.FC = () => {
           {/* Image column */}
           <div className="w-full lg:w-5/12 mb-10 lg:mb-0">
             <div className="relative">
-              <div className="absolute -z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-coral/20 to-coral-dark/5 blur-lg"></div>
+              <div className="absolute -z-10 w-[100%] h-[90%] rounded-full bg-gradient-to-br from-coral/20 to-coral-dark/5 blur-lg"></div>
               <img
-                src="/placeholder.svg"
+                src="/images/imagem-sessao-sobre-ayumi.jpeg"
                 alt="Ayumi Hanada - Especialista em projetos culturais"
                 className="rounded-lg shadow-lg max-w-full h-auto"
               />
@@ -55,7 +55,7 @@ const AboutInstructorSection: React.FC = () => {
             {/* Credentials */}
             <div className="bg-white p-6 rounded-lg shadow-md border border-graylight">
               <h4 className="font-medium text-lg mb-4">Credenciais:</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-0">
                 {credentials.map((credential, index) => (
                   <div key={index} className="check-item">
                     <Check className="text-coral flex-shrink-0 mt-1" size={18} />

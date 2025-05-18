@@ -59,7 +59,7 @@ const PracticalSection: React.FC = () => {
                 className="border border-graylight rounded-lg overflow-hidden bg-white shadow-sm"
               >
                 <button
-                  className={`w-full flex items-center justify-between p-4 md:p-6 text-left font-medium ${openItem === index ? 'bg-coral-dark text-white' : 'bg-white'}`}
+                  className={`w-full flex items-center justify-between p-4 md:p-4 text-left font-medium ${openItem === index ? 'bg-coral-dark text-white' : 'bg-offwhite-warm'}`}
                   onClick={() => toggleItem(index)}
                 >
                   <span className="text-lg font-serif">{item.title}</span>
