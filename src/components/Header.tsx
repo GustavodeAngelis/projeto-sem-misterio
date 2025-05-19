@@ -1,6 +1,5 @@
-
 import React from "react";
-import SubscriptionForm from "./SubscriptionForm";
+import SubscriptionForm from "./subscription/SubscriptionForm";
 
 const Header: React.FC = () => {
   return (

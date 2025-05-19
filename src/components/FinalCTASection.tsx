@@ -1,6 +1,6 @@
 
 import React from "react";
-import SubscriptionForm from "./SubscriptionForm";
+import SubscriptionForm from "./subscription/SubscriptionForm";
 
 const FinalCTASection: React.FC = () => {
   return (
