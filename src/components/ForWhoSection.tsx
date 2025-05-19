@@ -1,6 +1,8 @@
+
 import React from "react";
 import { Check, X } from "lucide-react";
-import SubscriptionForm from "./SubscriptionForm";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const ForWhoSection: React.FC = () => {
   const rightAudience = [
@@ -16,6 +18,13 @@ const ForWhoSection: React.FC = () => {
     "Espera que alguém escreva tudo por você",
     "Não quer colocar a mão na massa pra estruturar seu projeto"
   ];
+
+  const scrollToForm = () => {
+    const formElement = document.getElementById('subscription-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section 
@@ -71,9 +80,9 @@ const ForWhoSection: React.FC = () => {
           </p>
           
           <div className="mt-12">
-            <button className="btn-primary mx-auto">
+            <Button onClick={scrollToForm} className="btn-primary mx-auto">
               Quero destravar meu projeto
-            </button>
+            </Button>
           </div>
         </div>
       </div>

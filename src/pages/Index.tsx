@@ -1,6 +1,5 @@
 
 import React, { useEffect } from "react";
-import { Toaster } from "@/components/ui/toaster";
 import Header from "../components/Header";
 import BenefitsSection from "../components/BenefitsSection";
 import ForWhoSection from "../components/ForWhoSection";
@@ -28,7 +27,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-w-full overflow-x-hidden">
+    <div className="min-w-full w-full overflow-x-hidden">
       <Header />
       <BenefitsSection />
       <ForWhoSection />
@@ -37,7 +36,6 @@ const Index = () => {
       <TestimonialsSection />
       <FinalCTASection />
       <Footer />
-      <Toaster />
     </div>
   );
 };

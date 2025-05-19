@@ -1,3 +1,4 @@
+
 import React from "react";
 import SubscriptionForm from "./SubscriptionForm";
 
@@ -40,7 +41,9 @@ const Header: React.FC = () => {
               </p>
             </div>
 
-            <SubscriptionForm buttonSize="large" />
+            <div id="subscription-form">
+              <SubscriptionForm buttonSize="large" />
+            </div>
           </div>
         </div>
 
