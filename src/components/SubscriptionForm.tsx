@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { createOrUpdateSubscriber } from "@/integrations/mailerlite/client";
+import { isUsingDemoConfig } from "@/config/mailerlite";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
@@ -26,6 +28,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<{email?: string}>({});
+  const usingDemoConfig = isUsingDemoConfig();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -88,9 +91,36 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         return;
       }
 
-      // Save data to MailerLite
-      try {
-        await createOrUpdateSubscriber({
+      // Save data to MailerLite if not using demo config
+      if (!usingDemoConfig) {
+        try {
+          await createOrUpdateSubscriber({
+            email: formData.email,
+            fields: {
+              name: formData.name,
+              whatsapp: formData.whatsapp,
+              country: "Brazil",
+              source: "evento_forma_forca_jun_25"
+            }
+          });
+        } catch (mailerLiteError: any) {
+          console.error("Error submitting form to MailerLite:", mailerLiteError);
+          
+          // Handle rate limit errors
+          if (mailerLiteError.message?.includes('Rate limit exceeded')) {
+            toast({
+              title: "Aviso",
+              description: "O sistema está com muitas requisições. Sua inscrição foi registrada, mas pode demorar um pouco para receber as comunicações.",
+              variant: "default"
+            });
+          } else {
+            // For other MailerLite errors, we log but don't interrupt the flow
+            console.warn("MailerLite error details:", mailerLiteError);
+          }
+        }
+      } else {
+        // Log when using demo config
+        console.log("Using demo MailerLite config - would have sent:", {
           email: formData.email,
           fields: {
             name: formData.name,
@@ -99,20 +129,6 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             source: "evento_forma_forca_jun_25"
           }
         });
-      } catch (mailerLiteError: any) {
-        console.error("Error submitting form to MailerLite:", mailerLiteError);
-        
-        // Tratamento específico para erros de rate limit
-        if (mailerLiteError.message?.includes('Rate limit exceeded')) {
-          toast({
-            title: "Aviso",
-            description: "O sistema está com muitas requisições. Sua inscrição foi registrada, mas pode demorar um pouco para receber as comunicações.",
-            variant: "default"
-          });
-        } else {
-          // Para outros erros do MailerLite, apenas logamos mas não interrompemos o fluxo
-          console.warn("MailerLite error details:", mailerLiteError);
-        }
       }
       
       console.log("Form submitted successfully");
@@ -131,10 +147,20 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         whatsapp: "",
       });
       
-      // Redirect to the thank you page after a short delay
-      setTimeout(() => {
-        window.location.href = "https://obrigado-evento-ayumi.lovable.app";
-      }, 1500);
+      // In demo mode, don't redirect
+      if (!usingDemoConfig) {
+        // Redirect to the thank you page after a short delay
+        setTimeout(() => {
+          window.location.href = "https://obrigado-evento-ayumi.lovable.app";
+        }, 1500);
+      } else {
+        // Just show a message in demo mode
+        toast({
+          title: "Modo de demonstração",
+          description: "Em produção, você seria redirecionado para a página de agradecimento.",
+          duration: 5000,
+        });
+      }
       
     } catch (err) {
       console.error("Error:", err);
@@ -147,6 +173,16 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     }
   };
 
+  // Show a demo mode notice if using demo config
+  const demoModeNotice = usingDemoConfig && (
+    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4 rounded-md">
+      <p className="text-yellow-700">
+        <strong>Modo de demonstração:</strong> As chaves de API do MailerLite não estão configuradas. 
+        O formulário funcionará, mas não enviará dados para o MailerLite.
+      </p>
+    </div>
+  );
+
   return (
     <div className={`w-full ${className}`}>
       {showHeadline && (
@@ -155,11 +191,15 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         </h3>
       )}
       
+      {demoModeNotice}
+      
       {isSubmitted ? (
         <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-md animate-fade-in">
           <p className="text-green-700 font-medium">Inscrição realizada com sucesso!</p>
           <p className="text-green-600 mt-1">
-            Redirecionando para a página de agradecimento...
+            {usingDemoConfig 
+              ? "Este é o modo de demonstração. Em produção, você seria redirecionado para a página de agradecimento."
+              : "Redirecionando para a página de agradecimento..."}
           </p>
         </div>
       ) : (

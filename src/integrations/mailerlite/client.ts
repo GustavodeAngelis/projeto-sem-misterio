@@ -1,7 +1,8 @@
-import axios from 'axios';
-import { mailerLiteConfig } from '@/config/mailerlite';
 
-// Implementação simples de rate limiting
+import axios from 'axios';
+import { mailerLiteConfig, isUsingDemoConfig } from '@/config/mailerlite';
+
+// Simple rate limiter implementation
 class RateLimiter {
   private requests: number[] = [];
   private readonly maxRequests: number;
@@ -16,15 +17,15 @@ class RateLimiter {
     const now = Date.now();
     const oneMinuteAgo = now - 60000;
 
-    // Remove requisições antigas
+    // Remove old requests
     this.requests = this.requests.filter(time => time > oneMinuteAgo);
 
-    // Verifica se atingiu o limite
+    // Check if limit reached
     if (this.requests.length >= this.maxRequests) {
       return false;
     }
 
-    // Adiciona nova requisição
+    // Add new request
     this.requests.push(now);
     return true;
   }
@@ -56,19 +57,19 @@ export interface MailerLiteSubscriber {
   groups?: string[];
 }
 
-// Validação dos dados do subscriber
+// Subscriber data validation
 const validateSubscriber = (subscriber: MailerLiteSubscriber): void => {
   if (!subscriber.email) {
     throw new Error('Email is required');
   }
 
-  // Validação básica de email
+  // Basic email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(subscriber.email)) {
     throw new Error('Invalid email format');
   }
 
-  // Validação do tamanho dos campos
+  // Field length validation
   if (subscriber.fields?.name && subscriber.fields.name.length > 100) {
     throw new Error('Name is too long');
   }
@@ -79,10 +80,16 @@ const validateSubscriber = (subscriber: MailerLiteSubscriber): void => {
 
 export const createOrUpdateSubscriber = async (subscriber: MailerLiteSubscriber) => {
   try {
-    // Validação dos dados
+    // Validate data
     validateSubscriber(subscriber);
 
-    // Verifica rate limit
+    // If using demo config, just log and return mock response
+    if (isUsingDemoConfig()) {
+      console.log('Demo mode: Would send to MailerLite:', subscriber);
+      return { id: 'demo-subscriber-id', success: true, demo: true };
+    }
+
+    // Check rate limit
     const canProceed = await rateLimiter.checkLimit();
     if (!canProceed) {
       throw new Error('Rate limit exceeded. Please try again later.');
@@ -99,4 +106,4 @@ export const createOrUpdateSubscriber = async (subscriber: MailerLiteSubscriber)
   }
 };
 
-export default mailerLiteClient; 
+export default mailerLiteClient;
