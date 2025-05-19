@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { createOrUpdateSubscriber } from "@/integrations/mailerlite/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
@@ -65,15 +65,8 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     setIsSubmitting(true);
     
     try {
-      console.log("Sending data to Supabase:", {
-        name: formData.name,
-        email: formData.email,
-        whatsapp: formData.whatsapp,
-        source: "lp_forma_forca"
-      });
-      
       // Save data to Supabase
-      const { error } = await supabase
+      const { error: supabaseError } = await supabase
         .from('leads')
         .insert([
           { 
@@ -84,8 +77,8 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
           }
         ]);
       
-      if (error) {
-        console.error("Error submitting form:", error);
+      if (supabaseError) {
+        console.error("Error submitting form to Supabase:", supabaseError);
         toast({
           title: "Erro ao enviar formulário",
           description: "Por favor, tente novamente mais tarde.",
@@ -94,8 +87,35 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         setIsSubmitting(false);
         return;
       }
+
+      // Save data to MailerLite
+      try {
+        await createOrUpdateSubscriber({
+          email: formData.email,
+          fields: {
+            name: formData.name,
+            whatsapp: formData.whatsapp,
+            country: "Brazil",
+            source: "evento_forma_forca_jun_25"
+          }
+        });
+      } catch (mailerLiteError: any) {
+        console.error("Error submitting form to MailerLite:", mailerLiteError);
+        
+        // Tratamento específico para erros de rate limit
+        if (mailerLiteError.message?.includes('Rate limit exceeded')) {
+          toast({
+            title: "Aviso",
+            description: "O sistema está com muitas requisições. Sua inscrição foi registrada, mas pode demorar um pouco para receber as comunicações.",
+            variant: "default"
+          });
+        } else {
+          // Para outros erros do MailerLite, apenas logamos mas não interrompemos o fluxo
+          console.warn("MailerLite error details:", mailerLiteError);
+        }
+      }
       
-      console.log("Form submitted successfully to Supabase");
+      console.log("Form submitted successfully");
       setIsSubmitting(false);
       setIsSubmitted(true);
       
