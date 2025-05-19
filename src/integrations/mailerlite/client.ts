@@ -95,12 +95,16 @@ export const createOrUpdateSubscriber = async (subscriber: MailerLiteSubscriber)
       throw new Error('Rate limit exceeded. Please try again later.');
     }
 
+    console.log('Sending data to MailerLite with configured API key');
+    
     const response = await mailerLiteClient.post('/subscribers', {
       ...subscriber,
       groups: [mailerLiteConfig.groupId]
     });
+    
+    console.log('MailerLite API response:', response.status);
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating/updating MailerLite subscriber:', error);
     throw error;
   }

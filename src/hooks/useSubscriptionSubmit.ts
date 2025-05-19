@@ -54,36 +54,9 @@ export const useSubscriptionSubmit = (
         return;
       }
 
-      // Save data to MailerLite if not using demo config
-      if (!usingDemoConfig) {
-        try {
-          await createOrUpdateSubscriber({
-            email: formData.email,
-            fields: {
-              name: formData.name,
-              whatsapp: formData.whatsapp,
-              country: "Brazil",
-              source: "evento_forma_forca_jun_25"
-            }
-          });
-        } catch (mailerLiteError: any) {
-          console.error("Error submitting form to MailerLite:", mailerLiteError);
-          
-          // Handle rate limit errors
-          if (mailerLiteError.message?.includes('Rate limit exceeded')) {
-            toast({
-              title: "Aviso",
-              description: "O sistema está com muitas requisições. Sua inscrição foi registrada, mas pode demorar um pouco para receber as comunicações.",
-              variant: "default"
-            });
-          } else {
-            // For other MailerLite errors, we log but don't interrupt the flow
-            console.warn("MailerLite error details:", mailerLiteError);
-          }
-        }
-      } else {
-        // Log when using demo config
-        console.log("Using demo MailerLite config - would have sent:", {
+      // Save data to MailerLite
+      try {
+        await createOrUpdateSubscriber({
           email: formData.email,
           fields: {
             name: formData.name,
@@ -92,6 +65,30 @@ export const useSubscriptionSubmit = (
             source: "evento_forma_forca_jun_25"
           }
         });
+        
+        console.log("Data sent successfully to MailerLite");
+      } catch (mailerLiteError: any) {
+        console.error("Error submitting form to MailerLite:", mailerLiteError);
+        
+        // Handle rate limit errors
+        if (mailerLiteError.message?.includes('Rate limit exceeded')) {
+          toast({
+            title: "Aviso",
+            description: "O sistema está com muitas requisições. Sua inscrição foi registrada, mas pode demorar um pouco para receber as comunicações.",
+            variant: "default"
+          });
+        } else if (usingDemoConfig) {
+          // For demo mode, just log but don't interrupt
+          console.warn("Using demo config - MailerLite integration not active");
+        } else {
+          // For other MailerLite errors, we warn but don't interrupt the flow
+          console.warn("MailerLite error details:", mailerLiteError);
+          toast({
+            title: "Aviso",
+            description: "Sua inscrição foi registrada, mas houve um problema com a integração de email.",
+            variant: "default"
+          });
+        }
       }
       
       console.log("Form submitted successfully");
@@ -106,7 +103,7 @@ export const useSubscriptionSubmit = (
       // Clear form data
       resetForm();
       
-      // In demo mode, don't redirect
+      // If we have real API keys, redirect
       if (!usingDemoConfig) {
         // Redirect to the thank you page after a short delay
         setTimeout(() => {

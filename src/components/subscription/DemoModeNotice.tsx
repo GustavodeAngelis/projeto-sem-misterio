@@ -8,6 +8,10 @@ const DemoModeNotice: React.FC = () => {
         <strong>Modo de demonstração:</strong> As chaves de API do MailerLite não estão configuradas. 
         O formulário funcionará, mas não enviará dados para o MailerLite.
       </p>
+      <p className="text-yellow-600 text-sm mt-1">
+        Configure as variáveis de ambiente VITE_MAILERLITE_API_KEY e VITE_MAILERLITE_GROUP_ID 
+        para habilitar a integração completa.
+      </p>
     </div>
   );
 };
