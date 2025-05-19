@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -101,7 +100,7 @@ export const useSubscriptionSubmit = (
       
       // Redirect to thank you page
       setTimeout(() => {
-        window.location.href = "https://obrigado-evento-ayumi.lovable.app";
+        window.location.href = "https://evento-ayumi-projetos.lovable.app/obrigado";
       }, 1500);
       
     } catch (err) {

@@ -1,15 +1,15 @@
-
 import React from "react";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 
 const ThankYou = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center bg-offwhite">
       {/* Top bonus bar */}
-      <div className="bg-coral w-full py-2 text-center text-white">
+      <div className="bg-coral w-full py-4 text-center text-white">
         <p className="text-sm md:text-base">
-          🎁 Bônus especial para quem participar ao vivo até o final da live
+        📅 Forma & Força: 10 de Junho (terça-feira), às 20h • Online e gratuito
         </p>
       </div>
 
@@ -17,17 +17,13 @@ const ThankYou = () => {
       <div className="container-section flex-1 flex flex-col items-center justify-center">
         <div className="max-w-3xl mx-auto text-center">
           {/* Main heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 font-serif leading-tight">
-            Você está quase lá, falta somente um passo para a sua inscrição ser confirmada
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 font-serif leading-tight">
+            Você está quase lá, falta somente um passo...
           </h1>
           
           {/* Progress bar */}
-          <div className="w-full max-w-md mx-auto mb-8">
-            <Progress value={80} className="h-3" />
-            <div className="flex justify-between mt-2 text-sm text-textcolor-light">
-              <span>Inscrição</span>
-              <span>Confirmação</span>
-            </div>
+          <div className="w-full max-w-xl mx-auto mb-12">
+            <Progress value={80} />
           </div>
           
           {/* Explanation text */}
@@ -36,12 +32,15 @@ const ThankYou = () => {
           </p>
           
           {/* CTA Button */}
-          <Button 
-            className="btn-primary bg-green-600 hover:bg-green-500 py-4 px-8 text-lg font-medium"
-            onClick={() => window.open("#", "_blank")} // Placeholder URL to be filled in later
-          >
-            Confirmar minha inscrição no WhatsApp
-          </Button>
+          <div className="flex justify-center">
+            <Button 
+              className="btn-primary bg-green-500 hover:bg-green-400 py-7 px-12 text-xl font-medium flex items-center gap-3 shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => window.open("#", "_blank")} // Placeholder URL to be filled in later
+            >
+              <MessageCircle className="w-6 h-6" />
+              Confirmar minha inscrição no WhatsApp
+            </Button>
+          </div>
         </div>
       </div>
     </div>
