@@ -18,7 +18,7 @@ export const useSubscriptionSubmit = (
 ) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const usingDemoConfig = isUsingDemoConfig();
+  const usingDemoConfig = isUsingDemoConfig(); // Sempre será false agora
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,11 +77,7 @@ export const useSubscriptionSubmit = (
             description: "O sistema está com muitas requisições. Sua inscrição foi registrada, mas pode demorar um pouco para receber as comunicações.",
             variant: "default"
           });
-        } else if (usingDemoConfig) {
-          // For demo mode, just log but don't interrupt
-          console.warn("Using demo config - MailerLite integration not active");
         } else {
-          // For other MailerLite errors, we warn but don't interrupt the flow
           console.warn("MailerLite error details:", mailerLiteError);
           toast({
             title: "Aviso",
@@ -103,20 +99,10 @@ export const useSubscriptionSubmit = (
       // Clear form data
       resetForm();
       
-      // If we have real API keys, redirect
-      if (!usingDemoConfig) {
-        // Redirect to the thank you page after a short delay
-        setTimeout(() => {
-          window.location.href = "https://obrigado-evento-ayumi.lovable.app";
-        }, 1500);
-      } else {
-        // Just show a message in demo mode
-        toast({
-          title: "Modo de demonstração",
-          description: "Em produção, você seria redirecionado para a página de agradecimento.",
-          duration: 5000,
-        });
-      }
+      // Redirect to thank you page
+      setTimeout(() => {
+        window.location.href = "https://obrigado-evento-ayumi.lovable.app";
+      }, 1500);
       
     } catch (err) {
       console.error("Error:", err);

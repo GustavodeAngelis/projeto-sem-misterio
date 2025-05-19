@@ -2,18 +2,8 @@
 import React from "react";
 
 const DemoModeNotice: React.FC = () => {
-  return (
-    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4 rounded-md">
-      <p className="text-yellow-700">
-        <strong>Modo de demonstração:</strong> As chaves de API do MailerLite não estão configuradas. 
-        O formulário funcionará, mas não enviará dados para o MailerLite.
-      </p>
-      <p className="text-yellow-600 text-sm mt-1">
-        Configure as variáveis de ambiente VITE_MAILERLITE_API_KEY e VITE_MAILERLITE_GROUP_ID 
-        para habilitar a integração completa.
-      </p>
-    </div>
-  );
+  // No modo de produção, não exibimos nenhum aviso
+  return null;
 };
 
 export default DemoModeNotice;

@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { mailerLiteConfig, isUsingDemoConfig } from '@/config/mailerlite';
+import { mailerLiteConfig } from '@/config/mailerlite';
 
 // Simple rate limiter implementation
 class RateLimiter {
@@ -83,19 +83,13 @@ export const createOrUpdateSubscriber = async (subscriber: MailerLiteSubscriber)
     // Validate data
     validateSubscriber(subscriber);
 
-    // If using demo config, just log and return mock response
-    if (isUsingDemoConfig()) {
-      console.log('Demo mode: Would send to MailerLite:', subscriber);
-      return { id: 'demo-subscriber-id', success: true, demo: true };
-    }
-
     // Check rate limit
     const canProceed = await rateLimiter.checkLimit();
     if (!canProceed) {
       throw new Error('Rate limit exceeded. Please try again later.');
     }
 
-    console.log('Sending data to MailerLite with configured API key');
+    console.log('Sending data to MailerLite with production API key');
     
     const response = await mailerLiteClient.post('/subscribers', {
       ...subscriber,
@@ -111,3 +105,4 @@ export const createOrUpdateSubscriber = async (subscriber: MailerLiteSubscriber)
 };
 
 export default mailerLiteClient;
+
