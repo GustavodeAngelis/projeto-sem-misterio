@@ -23,7 +23,7 @@ const Header: React.FC = () => {
               Forma & Força: Destravando seu Projeto Cultural
             </h1>
             <h2 className="text-xl sm:text-2xl mb-6 font-medium">
-              Escreva projetos mais competitivos com menos esforço:
+              Escreva projetos mais competitivos em menos tempo:
               <br />
               <span className="font-bold ">
                 entenda o que realmente importa, o que evitar e como apresentar

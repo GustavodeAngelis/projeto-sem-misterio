@@ -42,7 +42,7 @@ const AboutInstructorSection: React.FC = () => {
                 Ayumi Hanada é artista da dança, produtora cultural e especialista na escrita de projetos culturais.
               </p>
               <p>
-                Mas, antes de tudo, é como você: uma artista independente que já travou na frente de um edital, já escreveu justificativa no susto, já se sentiu perdida sem saber por onde começar.
+                Mas, antes de tudo, é como você: uma artista independente sedenta por tirar seus projetos só do campo das ideias, que já travou na frente de um edital, já escreveu justificativa meio na "enrolação", já se sentiu perdida sem saber por onde começar.
               </p>
               <p>
                 Depois de bater muita cabeça, ela desenvolveu um método que já aprovou <strong>mais de 15 projetos próprios</strong> e captou <strong>mais de R$ 1 milhão</strong> em editais — tudo como artista atuante nos próprios projetos.

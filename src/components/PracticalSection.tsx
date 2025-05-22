@@ -80,7 +80,7 @@ const PracticalSection: React.FC = () => {
           
           <div className="mt-12 text-center">
             <p className="text-xl italic font-medium">
-              É pra parar de escrever no escuro e começar a construir com segurança. Juntxs, do jeito certo — e do seu jeito.
+              É pra parar de escrever no escuro e começar a construir com segurança. Juntos, do jeito certo — e do seu jeito.
             </p>
           </div>
         </div>

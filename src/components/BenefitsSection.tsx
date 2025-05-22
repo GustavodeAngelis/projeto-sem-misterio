@@ -6,7 +6,7 @@ const BenefitsSection: React.FC = () => {
     "Entender como estruturar um projeto do jeito que a banca valoriza",
     "Parar de escrever no escuro — e começar a escrever com segurança e direção",
     "Saber como organizar suas ideias criativas sem perder sua essência",
-    "Evitar os erros que reprovam bons projetos só por falta de clareza",
+    "Evitar os erros que reprovam bons projetos",
     "Sair com a cabeça mais leve e um plano claro pra continuar",
     "Ter uma justificativa que mostra impacto real, sem enrolação",
     "Ganhar tempo: menos retrabalho, menos dúvida, mais foco no que importa"
@@ -54,7 +54,7 @@ const BenefitsSection: React.FC = () => {
           <div className="lg:col-span-5 lg:justify-self-end">
             <div className="rounded-lg overflow-hidden shadow-lg max-w-md mx-auto lg:mx-0">
               <img 
-                src="/images/imagem-beneficios.png" 
+                src="/images/imagem-beneficios.jpg" 
                 alt="Artista trabalhando em seu projeto cultural" 
                 className="w-full h-full object-cover aspect-[3/4]" 
               />

@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 
 const ForWhoSection: React.FC = () => {
   const rightAudience = [
-    "É artista da dança, música, teatro, circo ou cultura popular",
-    "Já tentou escrever projeto, mas se sentiu travado(a), inseguro(a) ou perdido(a)",
-    "Tem ideias boas, mas não sabe como transformar isso num projeto coeso",
-    "Se frustra com os editais, porque parece que sempre falta \"alguma coisa\"",
+    "É artista da dança, música, teatro, circo ou produtora cultural",
+    "Nunca escreveu um projeto cultural antes",
+    "Já escreveu projetos antes, mas se sentiu travado(a), inseguro(a) ou perdido(a)",
+    "Já teve projetos aprovados, mas quer escrever projetos ainda mais competitivos",
     "Quer aprender a escrever com mais clareza e estratégia, sem abrir mão da sua linguagem"
   ];
 
