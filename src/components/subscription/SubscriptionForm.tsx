@@ -115,7 +115,7 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             {isSubmitting ? (
               <span className="inline-block animate-pulse">Enviando...</span>
             ) : (
-              "Quero destravar meu projeto"
+              "Quero participar!"
             )}
           </Button>
 

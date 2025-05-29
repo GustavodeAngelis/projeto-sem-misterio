@@ -35,7 +35,7 @@ const Header: React.FC = () => {
               <p className="flex items-center gap-2">
                 <span className="text-coral">📅</span>
                 <span>
-                  10 de Junho (segunda-feira), às 20h • Online e gratuito
+                  10 de Junho (terça-feira), às 19h47min • Online e gratuito
                 </span>
               </p>
             </div>
