@@ -17,7 +17,7 @@ const ThankYou = () => {
       <div 
         className="w-full h-full flex-1 flex flex-col items-center justify-center relative overflow-hidden"
         style={{
-          backgroundImage: "url(/images/imagem-obrigado.png)",
+          backgroundImage: "url(/images/imagem-obrigado.webp)",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

@@ -6,7 +6,7 @@ const Header: React.FC = () => {
     <header className="min-h-screen">
       {/* Top bonus bar */}
       <div className="bg-coral w-full py-2 text-center text-white">
-        <p className="text-sm md:text-base">
+        <p className="text-xs md:text-sm lg:text-base">
           🎁 Bônus especial para quem participar ao vivo até o final da live
         </p>
       </div>
@@ -51,9 +51,12 @@ const Header: React.FC = () => {
           <div className="relative">
             <div className="absolute -z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-coral-dark/10 to-coral/5 blur-2xl"></div>
             <img
-              src="/images/imagem-sessao-sobre-ayumi.jpeg"
+              src="/images/imagem-sessao-sobre-ayumi.webp"
               alt="Ayumi Hanada - Especialista em projetos culturais"
               className="max-w-full h-auto rounded-lg object-cover"
+              width={400}
+              height={533}
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/imagem-sessao-sobre-ayumi.jpeg'; }}
             />
           </div>
         </div>

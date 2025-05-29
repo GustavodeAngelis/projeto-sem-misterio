@@ -53,11 +53,16 @@ const BenefitsSection: React.FC = () => {
           {/* Right column: Image */}
           <div className="lg:col-span-5 lg:justify-self-end">
             <div className="rounded-lg overflow-hidden shadow-lg max-w-md mx-auto lg:mx-0">
-              <img 
-                src="/images/imagem-beneficios.jpg" 
-                alt="Artista trabalhando em seu projeto cultural" 
-                className="w-full h-full object-cover aspect-[3/4]" 
-              />
+              <picture>
+                <source srcSet="/images/imagem-beneficios.jpg" />
+                <img 
+                  src="/images/imagem-beneficios.jpg" 
+                  alt="Artista trabalhando em seu projeto cultural" 
+                  className="w-full h-full object-cover aspect-[3/4]" 
+                  width={400}
+                  height={533}
+                />
+              </picture>
             </div>
           </div>
         </div>
