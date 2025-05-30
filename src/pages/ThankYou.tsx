@@ -46,7 +46,7 @@ const ThankYou = () => {
               <hr className="border-t border-gray-400 my-3 md:my-4" />
 
               <p className="text-base md:text-lg">
-                <span className="font-bold text-blue-700">2</span> Depois de confirmar sua inscrição, <span className="font-bold">abra o e-mail que eu acabei de te mandar e responda à pesquisa rápida que está lá dentro</span>. Assim, você me ajuda a preparar melhor as aulas e, de quebra, eu conheço você melhor. É bem importante!
+                <span className="font-bold text-blue-700">2</span> Depois de confirmar sua inscrição, <span className="font-bold">abra o e-mail que eu acabei de te mandar e responda à pesquisa rápida que está lá dentro</span>. Assim, você me ajuda a preparar melhor as aulas e, de quebra, eu conheço você melhor. É bem importante! (Cheque na aba de promoções do seu e-mail e no spam)
               </p>
             </div>
             
