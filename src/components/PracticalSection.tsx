@@ -28,14 +28,14 @@ const PracticalSection: React.FC = () => {
     <section className="py-16 md:py-24">
       <div className="container-section">
         <h2 className="section-title text-center mb-6">
-          Na live, a gente não vai só falar — vai fazer junto.
+          A gente não vai só falar — vai fazer junto.
         </h2>
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <p className="text-lg md:text-xl">
-            Nessa live, você vai botar a mão na massa com a Ayumi.
+            Nesse intensivo, você vai botar a mão na massa comigo.
           </p>
           <p className="text-lg md:text-xl mt-4">
-            Ela vai te guiar por exercícios práticos, mostrar o método que ela mesma usa pra aprovar projetos, e revelar os pilares que fazem a banca dizer "sim".
+            Vou te guiar por exercícios práticos, mostrar o método que eu mesma uso pra aprovar projetos, e revelar os pilares que fazem a banca dizer "sim".
           </p>
           <p className="text-lg md:text-xl mt-4">
             Nada de teoria solta, nada de enrolação: é direção real pra tirar seu projeto do caos e colocar ele no caminho da aprovação — com estrutura, clareza e leveza.

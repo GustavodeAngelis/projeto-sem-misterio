@@ -21,7 +21,7 @@ const FinalCTASection: React.FC = () => {
             Se sente que escrever projeto virou um peso solitário — ou uma batalha contra o edital…
           </p>
           <p className="font-bold">
-            Essa live é pra você.
+            Esse intensivo é pra você.
           </p>
           <p>
             Aqui, você vai descobrir um caminho possível. Um método que respeita sua linguagem, traz clareza pro seu processo e aumenta suas chances reais de aprovação.
@@ -34,7 +34,7 @@ const FinalCTASection: React.FC = () => {
         <div className="max-w-lg mx-auto">
           <div className="bg-white rounded-lg shadow-xl border border-graylight p-8">
             <h3 className="text-2xl md:text-3xl font-serif font-bold text-center mb-6">
-              Inscreva-se agora e venha dar forma & força ao seu projeto cultural.
+              Inscreva-se agora e venha destravar o seu projeto cultural.
             </h3>
             
             <div className="text-center mb-8">

@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       {/* Top bonus bar */}
       <div className="bg-coral w-full py-2 text-center text-white">
         <p className="text-xs md:text-sm lg:text-base">
-          🎁 Bônus especial para quem participar ao vivo até o final da live
+          🎁 Bônus especiais para quem participar ao vivo
         </p>
       </div>
 

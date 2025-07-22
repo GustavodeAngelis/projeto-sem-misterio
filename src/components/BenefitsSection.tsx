@@ -18,7 +18,7 @@ const BenefitsSection: React.FC = () => {
       <div className="w-full px-4 md:px-8 mb-16 md:mb-0">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="section-title mb-6">
-            Depois dessa live, escrever projeto não vai mais ser um bicho de sete cabeças.
+            Depois desse intensivo, escrever projeto não vai mais ser um bicho de sete cabeças.
           </h2>
           
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">

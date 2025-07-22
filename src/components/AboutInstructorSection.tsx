@@ -14,7 +14,7 @@ const AboutInstructorSection: React.FC = () => {
     <section className="bg-offwhite-warm py-16 md:py-24">
       <div className="container-section">
         <h2 className="section-title text-center mb-16">
-          Quem vai te guiar nessa live
+          Quem vai te guiar nesse intensivo
         </h2>
         
         <div className="flex flex-col lg:flex-row lg:gap-16 items-center">

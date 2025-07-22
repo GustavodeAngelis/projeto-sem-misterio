@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     <footer className="bg-textcolor text-white py-8">
       <div className="container mx-auto px-6 text-center">
         <p className="text-sm mb-2">
-          © {currentYear} Forma & Força. Todos os direitos reservados.
+          © {currentYear} Projeto sem Mistério. Todos os direitos reservados.
         </p>
         <p className="text-xs text-gray-400">
           Este é um evento online independente para artistas. 
