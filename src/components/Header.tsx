@@ -17,10 +17,10 @@ const Header: React.FC = () => {
         <div className="w-full lg:w-7/12 mb-10 lg:mb-0">
           <div className="max-w-2xl">
             <p className="text-coral uppercase font-medium tracking-wider mb-3">
-              LIVE GRATUITA
+              INTENSIVÃO GRATUITO
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 font-serif leading-tight">
-              Forma & Força: Destravando seu Projeto Cultural
+              Projeto sem Mistério: Destravando seu Projeto Cultural
             </h1>
             <h2 className="text-xl sm:text-2xl mb-6 font-medium">
               Escreva projetos mais competitivos em menos tempo:
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
               <p className="flex items-center gap-2">
                 <span className="text-coral">📅</span>
                 <span>
-                  10 de Junho (terça-feira), às 19h47min • Online e gratuito
+                  De 01 a 03 de Setembro, às 19h47min • Online e gratuito
                 </span>
               </p>
             </div>

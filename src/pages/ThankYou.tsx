@@ -9,7 +9,7 @@ const ThankYou = () => {
       {/* Top bonus bar */}
       <div className="bg-coral w-full py-3 md:py-4 text-center text-white px-4">
         <p className="text-sm md:text-base">
-        📅 Forma & Força: 10 de Junho (terça-feira), às 19h47min • Online e gratuito
+        📅 Projeto sem Mistério: De 01 a 03 de Setembro, às 19h47min • Online e gratuito
         </p>
       </div>
 

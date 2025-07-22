@@ -39,7 +39,7 @@ const FinalCTASection: React.FC = () => {
             
             <div className="text-center mb-8">
               <p className="text-xl">
-                📅 Dia 10 de junho • às 19h47min • Online e gratuito
+                📅 De 01 a 03 de Setembro • às 19h47min • Online e gratuito
               </p>
             </div>
             

@@ -30,8 +30,8 @@ const Index = () => {
     <div className="min-w-full w-full overflow-x-hidden">
       <Header />
       <BenefitsSection />
-      <ForWhoSection />
       <PracticalSection />
+      <ForWhoSection />
       <AboutInstructorSection />
       <TestimonialsSection />
       <FinalCTASection />

@@ -1,40 +1,35 @@
 
-import React, { useState } from "react";
-import { Plus } from "lucide-react";
+import React from "react";
+import { CalendarDays } from "lucide-react";
+
+const days = [
+  {
+    day: "Dia 1",
+    title: "Destravando a Escrita",
+    description: "Descubra por que tantos travam e vire a chave: transforme bloqueio em confiança para tirar seu projeto do papel.",
+    value: "Você vai sair com uma ideia e um resumo potente",
+  },
+  {
+    day: "Dia 2",
+    title: "Os 5 Erros Fatais",
+    description: "Enxergue (e evite!) os erros que derrubam até boas ideias. Sinta a urgência de mudar e prepare-se para se destacar.",
+    value: "Você vai aprender a dar força ao seu projeto",
+  },
+  {
+    day: "Dia 3",
+    title: "Do Caos à Estrutura",
+    description: "Monte, junto comigo, o esqueleto do seu projeto. Clareza, direção e confiança para apresentar sua ideia de verdade.",
+    value: "Você vai sair com um plano concreto do seu projeto",
+  },
+];
 
 const PracticalSection: React.FC = () => {
-  const [openItem, setOpenItem] = useState<number | null>(null);
-
-  const practicalItems = [
-    {
-      title: "Método simples e replicável",
-      content: "Testar na prática um método que você pode aplicar imediatamente em seus projetos, seguindo passos claros e objetivos para criar propostas competitivas."
-    },
-    {
-      title: "Justificativa forte com impacto real",
-      content: "Aprender como montar uma justificativa que realmente convence a banca, mostrando o impacto e relevância do seu projeto sem usar linguagem vazia."
-    },
-    {
-      title: "Guia prático de estruturação",
-      content: "Descobrir por onde começar, o que evitar e como seguir no desenvolvimento do seu projeto, com dicas práticas e exemplos reais."
-    },
-    {
-      title: "Base sólida sem travamentos",
-      content: "Sair com uma base sólida para continuar seu projeto sem travar, com ferramentas que você pode aplicar imediatamente após a live."
-    }
-  ];
-
-  const toggleItem = (index: number) => {
-    setOpenItem(openItem === index ? null : index);
-  };
-
   return (
     <section className="py-16 md:py-24">
       <div className="container-section">
         <h2 className="section-title text-center mb-6">
           Na live, a gente não vai só falar — vai fazer junto.
         </h2>
-        
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <p className="text-lg md:text-xl">
             Nessa live, você vai botar a mão na massa com a Ayumi.
@@ -46,38 +41,26 @@ const PracticalSection: React.FC = () => {
             Nada de teoria solta, nada de enrolação: é direção real pra tirar seu projeto do caos e colocar ele no caminho da aprovação — com estrutura, clareza e leveza.
           </p>
         </div>
-        
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h3 className="text-2xl font-serif font-semibold mb-8 text-center">
-            O que você vai vivenciar:
+            O que você vai vivenciar em cada dia:
           </h3>
-          
-          <div className="space-y-4">
-            {practicalItems.map((item, index) => (
-              <div 
-                key={index} 
-                className="border border-graylight rounded-lg overflow-hidden bg-white shadow-sm"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {days.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-graylight rounded-xl shadow-md p-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow min-h-[320px]"
               >
-                <button
-                  className={`w-full flex items-center justify-between p-4 md:p-4 text-left font-medium ${openItem === index ? 'bg-coral-dark text-white' : 'bg-offwhite-warm'}`}
-                  onClick={() => toggleItem(index)}
-                >
-                  <span className="text-lg font-serif">{item.title}</span>
-                  <Plus 
-                    size={24} 
-                    className={`transform transition-transform ${openItem === index ? 'rotate-45' : ''}`}
-                  />
-                </button>
-                
-                {openItem === index && (
-                  <div className="p-4 md:p-6 bg-offwhite-warm animate-fade-in">
-                    <p className="text-lg">{item.content}</p>
-                  </div>
-                )}
+                <div className="flex items-center justify-center w-14 h-14 rounded-full bg-coral-dark mb-4">
+                  <CalendarDays size={32} className="text-white" />
+                </div>
+                <span className="text-coral-dark font-bold text-lg mb-2">{item.day}</span>
+                <h4 className="font-serif text-xl font-semibold mb-2">{item.title}</h4>
+                <p className="text-base text-gray-700 leading-relaxed mb-2">{item.description}</p>
+                <p className="text-base font-bold text-gray-700 leading-relaxed mt-4">{item.value}</p>
               </div>
             ))}
           </div>
-          
           <div className="mt-12 text-center">
             <p className="text-xl italic font-medium">
               É pra parar de escrever no escuro e começar a construir com segurança. Juntos, do jeito certo — e do seu jeito.
