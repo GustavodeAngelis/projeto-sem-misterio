@@ -38,7 +38,7 @@ export const useSubscriptionSubmit = (
             name: formData.name,
             email: formData.email,
             whatsapp: formData.whatsapp,
-            source: "lp_forma_forca"
+            source: "lp_projeto_sem_misterio_ago_2025"
           }
         ]);
       
