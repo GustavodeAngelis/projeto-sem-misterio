@@ -12,8 +12,8 @@ const days = [
   {
     day: "Dia 2",
     title: "Os 5 Erros Fatais",
-    description: "Enxergue (e evite!) os erros que derrubam até boas ideias. Sinta a urgência de mudar e prepare-se para se destacar.",
-    value: "Você vai aprender a dar força ao seu projeto",
+    description: "Enxergue (e evite!) os erros que derrubam até boas ideias. Dê força ao seu projeto ao aprender a fazer uma justificativa forte.",
+    value: "Você vai sair com uma justificativa forte.",
   },
   {
     day: "Dia 3",
@@ -38,7 +38,7 @@ const PracticalSection: React.FC = () => {
             Vou te guiar por exercícios práticos, mostrar o método que eu mesma uso pra aprovar projetos, e revelar os pilares que fazem a banca dizer "sim".
           </p>
           <p className="text-lg md:text-xl mt-4">
-            Nada de teoria solta, nada de enrolação: é direção real pra tirar seu projeto do caos e colocar ele no caminho da aprovação — com estrutura, clareza e leveza.
+            Nada de teoria solta, nada de enrolação: é direção real pra tirar seu projeto do caos e colocar ele no caminho certo — com estrutura, clareza e leveza.
           </p>
         </div>
         <div className="max-w-6xl mx-auto">
