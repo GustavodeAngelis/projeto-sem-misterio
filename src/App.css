@@ -42,7 +42,7 @@
 }
 
 .mobile-crop-top {
-  object-position: center 60%;
+  object-position: center 20%;
 }
 
 @media (min-width: 1024px) {
