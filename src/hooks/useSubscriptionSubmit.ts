@@ -90,18 +90,11 @@ export const useSubscriptionSubmit = (
       setIsSubmitting(false);
       setIsSubmitted(true);
       
-      toast({
-        title: "Inscrição realizada com sucesso!",
-        description: "Redirecionando para a página de agradecimento...",
-      });
-      
       // Clear form data
       resetForm();
       
-      // Redirect to thank you page
-      setTimeout(() => {
-        window.location.href = "https://evento-ayumi-projetos.lovable.app/obrigado";
-      }, 1500);
+      // Redirect immediately to thank you page
+      window.location.href = "https://evento-ayumi-projetos.lovable.app/obrigado";
       
     } catch (err) {
       console.error("Error:", err);
