@@ -30,10 +30,10 @@ const Index = () => {
     <div className="min-w-full w-full overflow-x-hidden">
       <Header />
       <Suspense fallback={<div aria-hidden className="h-24" />}> 
-        <BenefitsSection />
+        <PracticalSection />  
       </Suspense>
       <Suspense fallback={<div aria-hidden className="h-24" />}> 
-        <PracticalSection />
+        <BenefitsSection />
       </Suspense>
       <Suspense fallback={<div aria-hidden className="h-24" />}> 
         <ForWhoSection />

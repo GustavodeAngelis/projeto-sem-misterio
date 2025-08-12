@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.mobile-crop-top {
+  object-position: center 20%;
+}
+
+@media (min-width: 1024px) {
+  .mobile-crop-top {
+    object-position: center center;
+  }
+}

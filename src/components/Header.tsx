@@ -20,7 +20,7 @@ const Header: React.FC = () => {
               INTENSIVÃO GRATUITO
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 font-serif leading-tight">
-              Projeto sem Mistério: Destravando seu Projeto Cultural
+              Projeto sem Mistério
             </h1>
             <h2 className="text-xl sm:text-2xl mb-6 font-medium">
               Escreva projetos mais competitivos em menos tempo:
@@ -46,20 +46,21 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Right column: Image */}
+
+                    {/* Right column: Image */}
         <div className="w-full lg:w-5/12 flex items-center justify-center">
           <div className="relative">
             <div className="absolute -z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-coral-dark/10 to-coral/5 blur-2xl"></div>
             <img
               src="/images/imagem-sessao-sobre-ayumi.webp"
               alt="Ayumi Hanada - Especialista em projetos culturais"
-              className="max-w-full h-auto rounded-lg object-cover"
+              className="max-w-full h-auto rounded-lg object-cover mobile-crop-top lg:object-center"
               width={400}
               height={533}
               loading="eager"
               fetchPriority="high"
-              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/imagem-sessao-sobre-ayumi.jpeg'; }}
-            />
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/imagem-sessao-sobre-ayumi.jpeg'; }}/>
+            
           </div>
         </div>
       </div>
