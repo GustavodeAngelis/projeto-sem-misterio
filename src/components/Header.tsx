@@ -54,7 +54,7 @@ const Header: React.FC = () => {
             <img
               src="/images/imagem-sessao-sobre-ayumi.webp"
               alt="Ayumi Hanada - Especialista em projetos culturais"
-              className="max-w-full h-auto rounded-lg object-cover mobile-crop-top lg:object-center"
+              className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px] h-auto rounded-lg object-cover mobile-crop-top lg:object-center"
               width={400}
               height={533}
               loading="eager"
