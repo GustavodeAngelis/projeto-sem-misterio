@@ -27,7 +27,7 @@ const ForWhoSection: React.FC = () => {
 
   return (
     <section 
-      className="relative py-16 md:py-24 bg-cover bg-center bg-fixed"
+      className="relative py-16 md:py-24 bg-cover bg-center"
       style={{
         backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/imagem-sessao-2.png')"
       }}

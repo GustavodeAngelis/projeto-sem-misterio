@@ -23,13 +23,15 @@ const AboutInstructorSection: React.FC = () => {
             <div className="relative">
               <div className="absolute -z-10 w-[100%] h-[90%] rounded-full bg-gradient-to-br from-coral/20 to-coral-dark/5 blur-lg"></div>
               <picture>
-                <source srcSet="/images/imagem-sessao-sobre-ayumi.jpeg" type="image/webp" />
+                <source srcSet="/images/imagem-sessao-sobre-ayumi.webp" type="image/webp" />
                 <img
                   src="/images/imagem-sessao-sobre-ayumi.jpeg"
                   alt="Ayumi Hanada - Especialista em projetos culturais"
                   className="rounded-lg shadow-lg max-w-full h-auto"
                   width={400}
                   height={533}
+                  loading="lazy"
+                  decoding="async"
                 />
               </picture>
             </div>

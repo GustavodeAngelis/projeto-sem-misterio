@@ -56,6 +56,8 @@ const Header: React.FC = () => {
               className="max-w-full h-auto rounded-lg object-cover"
               width={400}
               height={533}
+              loading="eager"
+              fetchPriority="high"
               onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/imagem-sessao-sobre-ayumi.jpeg'; }}
             />
           </div>

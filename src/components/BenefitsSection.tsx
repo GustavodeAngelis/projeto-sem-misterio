@@ -61,6 +61,8 @@ const BenefitsSection: React.FC = () => {
                   className="w-full h-full object-cover aspect-[3/4]" 
                   width={400}
                   height={533}
+                  loading="lazy"
+                  decoding="async"
                 />
               </picture>
             </div>
