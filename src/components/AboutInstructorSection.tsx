@@ -27,7 +27,7 @@ const AboutInstructorSection: React.FC = () => {
                 <img
                   src="/images/imagem-sessao-sobre-ayumi.jpeg"
                   alt="Ayumi Hanada - Especialista em projetos culturais"
-                  className="rounded-lg shadow-lg max-w-full h-auto"
+                  className="rounded-lg shadow-lg max-w-full h-auto w-full max-w-[300px] sm:max-w-[350px]"
                   width={400}
                   height={533}
                   loading="lazy"

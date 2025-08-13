@@ -92,3 +92,28 @@
     @apply flex items-start gap-3 mb-4;
   }
 }
+
+/* Performance optimizations */
+.mobile-crop-top {
+  object-position: center 60%;
+}
+
+@media (min-width: 1024px) {
+  .mobile-crop-top {
+    object-position: center center;
+  }
+}
+
+/* Critical CSS for above-the-fold content */
+.critical-section {
+  will-change: auto;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

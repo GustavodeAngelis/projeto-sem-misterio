@@ -51,15 +51,18 @@ const Header: React.FC = () => {
         <div className="w-full lg:w-5/12 flex items-center justify-center">
           <div className="relative">
             <div className="absolute -z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-coral-dark/10 to-coral/5 blur-2xl"></div>
-            <img
-              src="/images/imagem-sessao-sobre-ayumi.webp"
-              alt="Ayumi Hanada - Especialista em projetos culturais"
-              className="max-w-full h-auto rounded-lg object-cover mobile-crop-top lg:object-center"
-              width={400}
-              height={533}
-              loading="eager"
-              fetchPriority="high"
-              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/imagem-sessao-sobre-ayumi.jpeg'; }}/>
+            <picture>
+              <source srcSet="/images/imagem-sessao-sobre-ayumi.webp" type="image/webp" />
+              <img
+                src="/images/imagem-sessao-sobre-ayumi.jpeg"
+                alt="Ayumi Hanada - Especialista em projetos culturais"
+                className="max-w-full h-auto rounded-lg object-cover mobile-crop-top lg:object-center w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px]"
+                width={400}
+                height={533}
+                loading="eager"
+                fetchPriority="high"
+              />
+            </picture>
             
           </div>
         </div>
