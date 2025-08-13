@@ -45,25 +45,25 @@ const Index = () => {
   return (
     <div className="min-w-full w-full overflow-x-hidden">
       <Header />
-      <Suspense fallback={<div aria-hidden className="h-16 bg-offwhite" />}> 
+      <Suspense fallback={<div aria-hidden className="h-8" />}> 
         <PracticalSection />  
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-16 bg-offwhite" />}> 
+      <Suspense fallback={<div aria-hidden className="h-8" />}> 
         <BenefitsSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-16 bg-offwhite" />}> 
+      <Suspense fallback={<div aria-hidden className="h-8" />}> 
         <ForWhoSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-16 bg-offwhite" />}> 
+      <Suspense fallback={<div aria-hidden className="h-8" />}> 
         <AboutInstructorSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-16 bg-offwhite" />}> 
+      <Suspense fallback={<div aria-hidden className="h-8" />}> 
         <TestimonialsSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-16 bg-offwhite" />}> 
+      <Suspense fallback={<div aria-hidden className="h-8" />}> 
         <FinalCTASection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-16 bg-offwhite" />}> 
+      <Suspense fallback={<div aria-hidden className="h-8" />}> 
         <Footer />
       </Suspense>
     </div>

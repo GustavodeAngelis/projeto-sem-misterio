@@ -3,37 +3,35 @@ import SubscriptionForm from "./subscription/SubscriptionForm";
 
 const Header: React.FC = () => {
   return (
-    <header className="min-h-screen">
+    <header className="critical-header">
       {/* Top bonus bar */}
-      <div className="bg-coral w-full py-2 text-center text-white">
-        <p className="text-xs md:text-sm lg:text-base">
-          🎁 Bônus especiais para quem participar ao vivo
-        </p>
+      <div className="critical-bonus">
+        <p>🎁 Bônus especiais para quem participar ao vivo</p>
       </div>
 
       {/* Main hero section */}
-      <div className="container-section flex flex-col items-center lg:flex-row lg:items-start lg:gap-12">
-        {/* Left column: Text content and form */}
-        <div className="w-full lg:w-7/12 mb-10 lg:mb-0">
-          <div className="max-w-2xl">
-            <p className="text-coral uppercase font-medium tracking-wider mb-3">
+      <div className="critical-container">
+        <div className="critical-content">
+          {/* Text content and form */}
+          <div className="critical-text">
+            <p style={{ color: "#FF6B4A", fontWeight: 600, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>
               INTENSIVÃO GRATUITO
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 font-serif leading-tight">
+            <h1 className="critical-title">
               Projeto sem Mistério
             </h1>
-            <h2 className="text-xl sm:text-2xl mb-6 font-medium">
+            <h2 className="critical-subtitle">
               Escreva projetos mais competitivos em menos tempo:
               <br />
-              <span className="font-bold ">
+              <strong>
                 entenda o que realmente importa, o que evitar e como apresentar
                 seu valor com clareza.
-              </span>
+              </strong>
             </h2>
 
-            <div className="mb-6 text-lg">
-              <p className="flex items-center gap-2">
-                <span className="text-coral">📅</span>
+            <div style={{ marginBottom: "1.5rem", fontSize: "1.125rem" }}>
+              <p style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "center" }}>
+                <span style={{ color: "#FF6B4A" }}>📅</span>
                 <span>
                   01, 02 e 03 de Setembro, às 19h47min • Online e gratuito
                 </span>
@@ -44,26 +42,23 @@ const Header: React.FC = () => {
               <SubscriptionForm buttonSize="large" />
             </div>
           </div>
-        </div>
 
 
-                    {/* Right column: Image */}
-        <div className="w-full lg:w-5/12 flex items-center justify-center">
-          <div className="relative">
-            <div className="absolute -z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-coral-dark/10 to-coral/5 blur-2xl"></div>
+          {/* Image */}
+          <div className="critical-image-container">
             <picture>
               <source srcSet="/images/imagem-sessao-sobre-ayumi.webp" type="image/webp" />
               <img
-                src="/images/imagem-sessao-sobre-ayumi.jpeg"
+                src="/images/imagem-sessao-sobre-ayumi.webp"
                 alt="Ayumi Hanada - Especialista em projetos culturais"
-                className="max-w-full h-auto rounded-lg object-cover mobile-crop-top lg:object-center w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px]"
-                width={400}
-                height={533}
+                className="critical-image"
+                width={280}
+                height={373}
                 loading="eager"
                 fetchPriority="high"
+                decoding="sync"
               />
             </picture>
-            
           </div>
         </div>
       </div>

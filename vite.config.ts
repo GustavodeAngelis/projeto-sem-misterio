@@ -25,9 +25,18 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           ui: ['@radix-ui/react-slot', '@radix-ui/react-toast', 'lucide-react'],
+          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
         },
       },
     },
     chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   },
 }));
