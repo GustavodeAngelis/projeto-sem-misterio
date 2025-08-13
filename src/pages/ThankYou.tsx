@@ -5,7 +5,7 @@ import { MessageCircle } from "lucide-react";
 
 const ThankYou = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center bg-offwhite">
+    <div className="h-screen flex flex-col justify-center bg-offwhite">
       {/* Top bonus bar */}
       <div className="bg-coral w-full py-3 md:py-4 text-center text-white px-4">
         <p className="text-sm md:text-base">
@@ -13,19 +13,9 @@ const ThankYou = () => {
         </p>
       </div>
 
-      {/* Main content section */}
-      <div 
-        className="w-full h-full flex-1 flex flex-col items-center justify-center relative overflow-hidden"
-        style={{
-          backgroundImage: "url(/images/imagem-obrigado.webp)",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Filtro de desfoque e sombra clara */}
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm shadow-2xl shadow-white z-0" />
-        <div className="relative z-10 w-full px-4 py-8 md:py-12">
-          <div className="max-w-3xl mx-auto text-center">
+
+        <div className="w-full flex-1 px-4 py-8 md:py-12 bg-white flex items-center justify-center">
+          <div className="max-w-3xl mx-auto text-center w-full">
             {/* Main heading */}
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4 font-serif leading-tight">
               Você está quase lá...
@@ -64,7 +54,6 @@ const ThankYou = () => {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };
