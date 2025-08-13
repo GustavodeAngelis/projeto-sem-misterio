@@ -18,7 +18,7 @@ const Header: React.FC = () => {
               INTENSIVÃO GRATUITO
             </p>
             <h1 className="critical-title">
-              Projeto sem Mistério
+            <strong>Projeto sem Mistério</strong>
             </h1>
             <h2 className="critical-subtitle">
               Escreva projetos mais competitivos em menos tempo:
