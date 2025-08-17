@@ -43,8 +43,7 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-
-          {/* Image */}
+          {/* Image - LCP element with optimized loading */}
           <div className="critical-image-container">
             <picture>
               <source srcSet="/images/imagem-sessao-sobre-ayumi.webp" type="image/webp" />
@@ -57,6 +56,10 @@ const Header: React.FC = () => {
                 loading="eager"
                 fetchPriority="high"
                 decoding="sync"
+                style={{
+                  aspectRatio: "280/373",
+                  objectFit: "cover"
+                }}
               />
             </picture>
           </div>

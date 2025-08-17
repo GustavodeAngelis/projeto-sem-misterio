@@ -2,7 +2,7 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import Header from "../components/Header";
 
-// Lazy load all sections below the fold for better performance
+// Lazy load sections below the fold with optimized fallbacks
 const BenefitsSection = lazy(() => 
   import("../components/BenefitsSection").then(module => ({ default: module.default }))
 );
@@ -25,6 +25,15 @@ const Footer = lazy(() =>
   import("../components/Footer").then(module => ({ default: module.default }))
 );
 
+// Optimized fallback components to prevent layout shift
+const SectionFallback = ({ height = "h-96" }: { height?: string }) => (
+  <div 
+    aria-hidden 
+    className={`${height} bg-gradient-to-br from-gray-50 to-gray-100 animate-pulse rounded-lg`}
+    style={{ containIntrinsicSize: "400px" }}
+  />
+);
+
 const Index = () => {
   // Implement smooth scrolling
   useEffect(() => {
@@ -44,26 +53,35 @@ const Index = () => {
 
   return (
     <div className="min-w-full w-full overflow-x-hidden">
+      {/* Header renderizado imediatamente - above the fold */}
       <Header />
-      <Suspense fallback={<div aria-hidden className="h-8" />}> 
+      
+      {/* Seções abaixo da dobra com lazy loading otimizado */}
+      <Suspense fallback={<SectionFallback height="h-96" />}> 
         <PracticalSection />  
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-8" />}> 
+      
+      <Suspense fallback={<SectionFallback height="h-96" />}> 
         <BenefitsSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-8" />}> 
+      
+      <Suspense fallback={<SectionFallback height="h-80" />}> 
         <ForWhoSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-8" />}> 
+      
+      <Suspense fallback={<SectionFallback height="h-96" />}> 
         <AboutInstructorSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-8" />}> 
+      
+      <Suspense fallback={<SectionFallback height="h-80" />}> 
         <TestimonialsSection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-8" />}> 
+      
+      <Suspense fallback={<SectionFallback height="h-64" />}> 
         <FinalCTASection />
       </Suspense>
-      <Suspense fallback={<div aria-hidden className="h-8" />}> 
+      
+      <Suspense fallback={<SectionFallback height="h-48" />}> 
         <Footer />
       </Suspense>
     </div>
