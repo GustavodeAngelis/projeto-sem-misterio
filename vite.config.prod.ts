@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-// Configuração otimizada para produção
+// Configuração otimizada para produção - mais segura
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -18,79 +18,43 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Chunks otimizados para produção
+          // Chunks simplificados e seguros
           vendor: ['react', 'react-dom'],
-          ui: [
-            '@radix-ui/react-slot', 
-            '@radix-ui/react-toast', 
-            '@radix-ui/react-tooltip',
-            'lucide-react'
-          ],
-          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
-          router: ['react-router-dom'],
-          supabase: ['@supabase/supabase-js'],
-          utils: ['clsx', 'class-variance-authority', 'tailwind-merge']
+          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast', 'lucide-react'],
         },
         // Nomes de arquivos otimizados
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
       },
-      // Tree shaking agressivo
+      // Tree shaking mais conservador
       treeshake: {
-        moduleSideEffects: false,
-        propertyReadSideEffects: false,
-        unknownGlobalSideEffects: false
+        moduleSideEffects: true,
+        propertyReadSideEffects: true,
+        unknownGlobalSideEffects: true
       }
     },
-    // Otimizações de build
-    chunkSizeWarningLimit: 300,
+    // Configurações de build mais conservadoras
+    chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug'],
-        passes: 3,
-        unsafe: true,
-        unsafe_comps: true
+        pure_funcs: ['console.log'],
+        passes: 1
       },
       mangle: {
-        toplevel: true,
-        safari10: true
+        toplevel: false,
+        safari10: false
       }
     },
     // Otimizações de CSS
     cssTarget: 'esnext'
   },
-  // Otimizações de dependências
+  // Otimizações de dependências mais seguras
   optimizeDeps: {
     include: ['react', 'react-dom'],
-    exclude: [
-      '@radix-ui/react-accordion', 
-      '@radix-ui/react-alert-dialog',
-      '@radix-ui/react-aspect-ratio',
-      '@radix-ui/react-avatar',
-      '@radix-ui/react-checkbox',
-      '@radix-ui/react-collapsible',
-      '@radix-ui/react-context-menu',
-      '@radix-ui/react-dialog',
-      '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-hover-card',
-      '@radix-ui/react-label',
-      '@radix-ui/react-menubar',
-      '@radix-ui/react-navigation-menu',
-      '@radix-ui/react-popover',
-      '@radix-ui/react-progress',
-      '@radix-ui/react-radio-group',
-      '@radix-ui/react-scroll-area',
-      '@radix-ui/react-select',
-      '@radix-ui/react-separator',
-      '@radix-ui/react-slider',
-      '@radix-ui/react-switch',
-      '@radix-ui/react-tabs',
-      '@radix-ui/react-toggle',
-      '@radix-ui/react-toggle-group'
-    ]
+    exclude: []
   }
 });

@@ -25,68 +25,47 @@ export default defineConfig(({ mode }) => ({
     cssMinify: true,
     rollupOptions: {
       output: {
+        // Chunks simplificados e seguros
         manualChunks: {
-          // Vendor chunk para React
+          // Vendor chunk principal para React
           vendor: ['react', 'react-dom'],
-          // UI components chunk
-          ui: [
-            '@radix-ui/react-slot', 
-            '@radix-ui/react-toast', 
-            '@radix-ui/react-tooltip',
-            'lucide-react'
-          ],
-          // Forms chunk
-          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
-          // Router chunk
-          router: ['react-router-dom'],
-          // Supabase chunk
-          supabase: ['@supabase/supabase-js'],
-          // Utils chunk
-          utils: ['clsx', 'class-variance-authority', 'tailwind-merge']
+          // UI components essenciais
+          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast', 'lucide-react'],
         },
-        // Otimizações de output
+        // Nomes de arquivos otimizados
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
       },
-      // Tree shaking mais agressivo
+      // Tree shaking mais conservador
       treeshake: {
-        moduleSideEffects: false,
-        propertyReadSideEffects: false,
-        unknownGlobalSideEffects: false
+        moduleSideEffects: true, // Mais seguro
+        propertyReadSideEffects: true, // Preserva propriedades
+        unknownGlobalSideEffects: true // Preserva globais
       }
     },
-    // Otimizações de build
-    chunkSizeWarningLimit: 500,
+    // Configurações de build mais conservadoras
+    chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
     sourcemap: false,
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug'],
-        passes: 2
+        pure_funcs: ['console.log'], // Menos agressivo
+        passes: 1 // Apenas uma passada
       },
       mangle: {
-        toplevel: true
+        toplevel: false, // Mais seguro
+        safari10: false
       }
     },
     // Otimizações de CSS
     cssTarget: 'esnext'
   },
-  // Otimizações de desenvolvimento
+  // Otimizações de desenvolvimento mais seguras
   optimizeDeps: {
     include: ['react', 'react-dom'],
-    exclude: ['@radix-ui/react-accordion', '@radix-ui/react-alert-dialog']
-  },
-  // Configuração para análise de bundle
-  ...(mode === 'analyze' && {
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: undefined
-        }
-      }
-    }
-  })
+    exclude: [] // Não excluir nada por enquanto
+  }
 }));

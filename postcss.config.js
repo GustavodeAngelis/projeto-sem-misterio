@@ -2,17 +2,17 @@ export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    // Otimizações de performance
+    // Otimizações de performance mais seguras
     ...(process.env.NODE_ENV === 'production' ? {
       cssnano: {
         preset: ['default', {
           discardComments: {
-            removeAll: true,
+            removeAll: false, // Preservar comentários importantes
           },
           normalizeWhitespace: true,
           colormin: true,
           minifyFontValues: true,
-          minifySelectors: true,
+          minifySelectors: false, // Mais seguro
         }]
       }
     } : {})
