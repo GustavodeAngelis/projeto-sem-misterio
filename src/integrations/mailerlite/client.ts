@@ -93,13 +93,21 @@ export const createOrUpdateSubscriber = async (subscriber: MailerLiteSubscriber)
     
     const response = await mailerLiteClient.post('/subscribers', {
       ...subscriber,
-      groups: [mailerLiteConfig.groupId]
+      groups: [mailerLiteConfig.groupId],
+      // Ensure existing contacts are re-subscribed without error
+      resubscribe: true
     });
     
     console.log('MailerLite API response:', response.status);
     return response.data;
   } catch (error: any) {
-    console.error('Error creating/updating MailerLite subscriber:', error);
+    // If subscriber already exists, treat as non-fatal when resubscribing
+    const status = error?.response?.status;
+    if (status === 409) {
+      console.warn('Subscriber already exists in MailerLite; treating as success.');
+      return { ok: true, status };
+    }
+    console.error('Error creating/updating MailerLite subscriber:', error?.response?.data || error?.message || error);
     throw error;
   }
 };
