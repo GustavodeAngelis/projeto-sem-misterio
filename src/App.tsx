@@ -6,8 +6,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { usePerformance } from "@/hooks/usePerformance";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import ThankYou from "./pages/ThankYou";
+import { useEffect, Suspense, lazy } from "react";
+import { persistUtmFromUrlOnce } from "@/lib/utm";
+
+const ThankYou = lazy(() => import("./pages/ThankYou"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,17 +26,23 @@ const queryClient = new QueryClient({
 const App = () => {
   // Monitorar performance
   usePerformance();
+  // Capture UTMs/referrer/landing path on first app mount
+  useEffect(() => {
+    persistUtmFromUrlOnce();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/obrigado" element={<ThankYou />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<div />}> 
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/obrigado" element={<ThankYou />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
         <Toaster />
         <Sonner />
